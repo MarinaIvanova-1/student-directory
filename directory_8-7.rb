@@ -12,7 +12,7 @@ def input_students
     cohort = gets.chomp
     cohort = :november if cohort.empty?
     #add the student hash to the array
-    students << {name: name, cohort: cohort.to_s}
+    students << {name: name, cohort: cohort.to_sym}
     puts "Now we have #{students.count} students"
     #get another name from the user
     name = gets.chomp

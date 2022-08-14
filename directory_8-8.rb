@@ -7,8 +7,12 @@ def input_students
   name = gets.chomp
   #while the name is not empty repeat this code
   while !name.empty? do
+    #ask for a cohort
+    puts "Which cohort are they in?"
+    cohort = gets.chomp
+    cohort = "november" if cohort.empty?
     #add the student hash to the array
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
     #get another name from the user
     name = gets.chomp
@@ -23,8 +27,12 @@ def print_header
 end
 
 def print(student_list)
+  puts "Which cohort would you like to print out?"
+  target_cohort = gets.chomp
   student_list.each do |student|
-    puts "#{(student[:name])} (#{student[:cohort]} cohort)"
+    if student[:cohort].include?(target_cohort)
+      puts "#{(student[:name])} (#{student[:cohort]} cohort)"
+    end
   end
 end
 
@@ -33,12 +41,7 @@ def print_footer(students)
 end
 
 
-#students = input_students
-#print_header
-#print(students)
-#print_footer(students)
-
-var = gets.chomp
-puts var
-var2 = gets
-puts var2
+students = input_students
+print_header
+print(students)
+print_footer(students)
