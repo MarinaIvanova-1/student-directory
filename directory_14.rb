@@ -116,5 +116,11 @@ def add_student(name, cohort = "november")
   @students << {name: name, cohort: cohort.to_sym}
 end
 
+def load_filename 
+  #get the name of the currently executed file
+  puts "Currently executing file is #{File.basename(__FILE__)}"
+end
+
+load_filename
 try_load_students
 interactive_menu
